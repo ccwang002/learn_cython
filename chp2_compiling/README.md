@@ -1,3 +1,23 @@
+## Usage
+### Setup
+
+~~~bash
+python setup.py build_ext --inplace
+~~~
+
+For shared lib `libcfib` run
+
+~~~bash
+# under ./lib
+clang -shared -undefined dynamic_lookup -I../ -o ../libcfib.so cfib.c
+~~~
+
+### Demo
+
+~~~bash
+nosetests -v
+~~~
+
 ## Wrap external C library on OSX (using Clang)
 
 Example `wrap_fib_ext.pyx`.
@@ -5,11 +25,9 @@ Example `wrap_fib_ext.pyx`.
 ### Buid `cfib` as shared library
 
 ~~~bash
-clang -Wall -c cfib.c
-# create cfib.o
-clang -shared -undefined dynamic_lookup -o libcfib.so cfib.c
+clang -Wall -c cfib.c  # create cfib.o
 # create libcfib.so
-python setup_wrap_ext.py build_ext --inplace
+clang -shared -undefined dynamic_lookup -I../ -o ../libcfib.so cfib.c
 ~~~
 
 Check it links to `libcfib.so`
@@ -24,9 +42,7 @@ otool -L wrap_fib_ext.so
 
 ### Build `cfib` from source
 
-~~~bash
-python setup_wrap.py build_ext --inplace
-~~~
+Example `wrap_fib.pyx` (same content as `wrap_fib_ext.pyx`)
 
 ~~~bash
 otool -L wrap_fib.so

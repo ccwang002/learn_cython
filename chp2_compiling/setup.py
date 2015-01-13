@@ -18,7 +18,8 @@ exts = [
     # setup steps:
     #   1. build the libcfib
     #       clang -Wall -c cfib.c
-    #       clang -shared -undefined dynamic_lookup -o ../libcfib.so cfib.o
+    #       clang -shared -undefined dynamic_lookup
+    #           -I../ -o ../libcfib.so cfib.o
     #   2. build cython extension and link to libcfib
     #       setup.py build --inplace
     # note:
