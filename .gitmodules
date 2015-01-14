@@ -1,0 +1,3 @@
+[submodule "cythonbook"]
+	path = cythonbook_ex
+	url = https://github.com/cythonbook/examples
