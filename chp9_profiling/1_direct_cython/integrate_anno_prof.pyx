@@ -1,7 +1,7 @@
 # cython: profile=True
 from math import sin
 
-def cysin(double x):
+def cysin2(double x):
     return sin(x) ** 2
 
 def integrate(double a, double b, f, int N=2000):
