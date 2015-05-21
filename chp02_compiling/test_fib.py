@@ -29,6 +29,3 @@ def test_wrap_fib_ext():
     assert _fib(1) == 1
     assert _fib(7) == 13
 
-
-
-

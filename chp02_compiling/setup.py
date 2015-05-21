@@ -14,12 +14,15 @@ exts = [
         sources=["lib/cfib.c", "wrap_fib.pyx"],
         include_dirs=['.'],
     ),
-    # dynamically link to lib/libcfib.so
+    # dynamically link to lib/libcfib.so (libcfib.so symlink to here)
+    # currently run
+    #   make
+    #   make test
     # setup steps:
     #   1. build the libcfib
     #       clang -Wall -c cfib.c
     #       clang -shared -undefined dynamic_lookup
-    #           -I../ -o ../libcfib.so cfib.o
+    #           -I../ -o libcfib.so cfib.o
     #   2. build cython extension and link to libcfib
     #       setup.py build --inplace
     # note:
@@ -34,4 +37,4 @@ exts = [
     ),
 ]
 
-setup(ext_modules=cythonize(exts))
+setup(ext_modules=cythonize(exts, language_level=3))
