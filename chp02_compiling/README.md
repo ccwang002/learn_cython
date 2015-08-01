@@ -9,7 +9,7 @@ For shared lib `libcfib` run
 
 ~~~bash
 # under ./lib
-clang -shared -undefined dynamic_lookup -I../ -o ../libcfib.so cfib.c
+clang -shared -undefined dynamic_lookup -I../ -o libcfib.so cfib.c; and mv libcfib.so ..
 ~~~
 
 ### Demo
@@ -27,7 +27,7 @@ Example `wrap_fib_ext.pyx`.
 ~~~bash
 clang -Wall -c cfib.c  # create cfib.o
 # create libcfib.so
-clang -shared -undefined dynamic_lookup -I../ -o ../libcfib.so cfib.c
+clang -shared -undefined dynamic_lookup -I../ -o libcfib.so cfib.c; and mv libcfib.so ..
 ~~~
 
 Check it links to `libcfib.so`
